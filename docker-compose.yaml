@@ -1,0 +1,14 @@
+services:
+  fastlivo2:
+    build: .
+    gpus: all
+    container_name: fastlivo2_container
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /dev/bus/usb:/dev/bus/usb
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    devices:
+      - /dev/dri:/dev/dri
+    network_mode: host

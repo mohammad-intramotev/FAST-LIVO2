@@ -1,2 +1,4 @@
 Log/*
 build/*
+ros_bags/*
+!.gitkeep
