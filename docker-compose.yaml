@@ -9,6 +9,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /dev/bus/usb:/dev/bus/usb
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./ros_bags:/root/catkin_ws/src/ros_bags
+      - ./Log:/root/catkin_ws/src/FAST-LIVO2/Log
     devices:
       - /dev/dri:/dev/dri
     network_mode: host
