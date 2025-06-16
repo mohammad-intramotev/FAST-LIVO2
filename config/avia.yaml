@@ -23,7 +23,7 @@ preprocess:
   point_filter_num: 1
   filter_size_surf: 0.1
   lidar_type: 1 # Livox Avia LiDAR
-  scan_line: 6
+  scan_line: 0
   blind: 0.8
 
 vio:
@@ -67,7 +67,7 @@ uav:
 
 publish:
   dense_map_en: true
-  pub_effect_point_en: false 
+  pub_effect_point_en: true
   pub_plane_en: false
   pub_scan_num: 1
   blind_rgb_points: 0.0
@@ -83,3 +83,8 @@ pcd_save:
   interval: -1
   # how many LiDAR frames saved in each pcd file;
   # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
+
+# xhost +local:root
+# docker exec -it fastlivo2_container bash
+# roslaunch fast_livo mapping_avia.launch
+# rosbag play src/ros_bags/

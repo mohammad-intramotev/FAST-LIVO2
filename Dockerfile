@@ -1,23 +1,11 @@
 FROM ros:noetic-ros-core
 
-# Set to noninteractive
-ENV DEBIAN_FRONTEND=noninteractive
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive \
+    DISABLE_ROS1_EOL_WARNINGS=true
 
 # Setup workspace
 WORKDIR /root/catkin_ws/src
-
-# Fix temp key issue
-RUN apt-get update || true && apt-get install -y --no-install-recommends \
-    curl gnupg2 lsb-release ca-certificates \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -f /etc/apt/sources.list.d/ros1-latest.list \
-             /usr/share/keyrings/ros1-latest-archive-keyring.gpg \
-    && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
-        -o /usr/share/keyrings/ros1-latest-archive-keyring.gpg \
-    && echo \
-       "deb [signed-by=/usr/share/keyrings/ros1-latest-archive-keyring.gpg] \
-       http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" \
-       > /etc/apt/sources.list.d/ros-latest.list
 
 # Install system dependencies
 RUN apt-get update && \
